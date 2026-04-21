@@ -2,9 +2,11 @@
 
 **Enterprise procure-to-pay management built with SAP CAP**
 
+`🏢 Procurement` `⚙️ SAP CAP` `📦 OData Services` `🗄️ SQLite` `💳 Procure-to-Pay`
+
 ProcureFlow is a full-cycle procurement application that models the complete purchase journey from supplier onboarding to final payment. The project is built on **SAP Cloud Application Programming Model (CAP)** with **CDS domain modeling**, **OData V4 services**, **SQLite persistence**, and a custom frontend served directly by CAP.
 
-## What This Project Covers
+## 🚀 What This Project Covers
 
 - Supplier onboarding and vendor master tracking
 - Purchase requisition creation
@@ -14,7 +16,7 @@ ProcureFlow is a full-cycle procurement application that models the complete pur
 - Payment execution and spend visibility
 - Dashboard metrics and recent workflow activity
 
-## Why It Stands Out
+## ✨ Why It Stands Out
 
 - CAP-native architecture using `db/`, `srv/`, and `app/`
 - CDS-based business model for the full procure-to-pay lifecycle
@@ -23,7 +25,7 @@ ProcureFlow is a full-cycle procurement application that models the complete pur
 - Status propagation across the workflow after key business events
 - Seeded demo data for immediate local testing
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 | Layer | Technology |
 | --- | --- |
@@ -34,7 +36,7 @@ ProcureFlow is a full-cycle procurement application that models the complete pur
 | Service Protocol | OData V4 |
 | Frontend | HTML, CSS, JavaScript |
 
-## Project Structure
+## 🧭 Project Structure
 
 ```text
 app/
@@ -52,7 +54,7 @@ srv/
   procure-service.js      # CAP handlers and business logic
 ```
 
-## Key Business Logic
+## 🔄 Key Business Logic
 
 The CAP service layer handles core workflow automation:
 
@@ -63,7 +65,7 @@ The CAP service layer handles core workflow automation:
 - Marks invoices as paid after payment creation
 - Exposes an overview action for dashboard KPIs and activity timeline
 
-## Local Setup
+## ▶️ Local Setup
 
 Install dependencies:
 
@@ -87,7 +89,7 @@ Open the application in your browser:
 
 [http://localhost:4004](http://localhost:4004)
 
-## CAP CLI Commands
+## 💻 CAP CLI Commands
 
 You can also run the project directly with CAP CLI commands:
 
@@ -103,13 +105,13 @@ npx cds build
 npx cds --version
 ```
 
-## Service Endpoints
+## 🔌 Service Endpoints
 
 - Application root: `/`
 - OData service root: `/odata/v4/procureflow`
 - Overview action: `POST /odata/v4/procureflow/getOverview`
 
-## Seed Data
+## 🌱 Seed Data
 
 The project ships with demo data in `db/data/` for:
 
@@ -122,7 +124,7 @@ The project ships with demo data in `db/data/` for:
 
 This makes the application usable immediately after deployment without manual setup.
 
-## Use Case
+## 🎯 Use Case
 
 This project is suitable for:
 
@@ -131,6 +133,6 @@ This project is suitable for:
 - procure-to-pay workflow prototypes
 - internal purchasing dashboard concepts
 
-## Summary
+## 📘 Summary
 
 ProcureFlow combines a clear enterprise use case with a proper SAP CAP implementation. It demonstrates how to model procurement operations with CDS, expose them through OData services, and deliver a functional frontend on top of a maintainable CAP backend.
