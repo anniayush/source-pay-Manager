@@ -1,0 +1,38 @@
+{
+  "name": "procure-to-pay-suite",
+  "version": "1.0.0",
+  "description": "SAP CAP procure-to-pay application with frontend, services, and SQLite persistence.",
+  "private": true,
+  "scripts": {
+    "start": "cds-serve",
+    "dev": "cds watch",
+    "deploy": "cds deploy --to sqlite:db/procureflow.sqlite",
+    "build": "cds build"
+  },
+  "keywords": [
+    "procure-to-pay",
+    "p2p",
+    "procurement",
+    "nodejs",
+    "sqlite"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@cap-js/sqlite": "^2.2.0",
+    "@sap/cds": "^9.8.5"
+  },
+  "devDependencies": {
+    "@sap/cds-dk": "^9.8.4"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "url": "db/procureflow.sqlite"
+        }
+      }
+    }
+  }
+}
