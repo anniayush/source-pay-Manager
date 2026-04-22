@@ -137,6 +137,62 @@ function renderTimeline() {
     .join("");
 }
 
+function renderWorkflowGraph() {
+  const container = document.getElementById("workflowGraph");
+  const stages = [
+    { label: "Suppliers", value: state.suppliers.length },
+    { label: "Requisitions", value: state.requisitions.length },
+    { label: "POs", value: state.purchaseOrders.length },
+    { label: "Receipts", value: state.receipts.length },
+    { label: "Invoices", value: state.invoices.length },
+    { label: "Payments", value: state.payments.length }
+  ];
+  const max = Math.max(...stages.map((stage) => stage.value), 1);
+  const width = 720;
+  const height = 260;
+  const paddingX = 46;
+  const paddingY = 30;
+  const stepX = (width - paddingX * 2) / (stages.length - 1);
+
+  const points = stages.map((stage, index) => {
+    const x = paddingX + stepX * index;
+    const y = height - paddingY - (stage.value / max) * (height - paddingY * 2);
+    return { ...stage, x, y };
+  });
+
+  const linePath = points.map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`).join(" ");
+  const areaPath = `${linePath} L ${points[points.length - 1].x} ${height - paddingY} L ${points[0].x} ${height - paddingY} Z`;
+  const gridLines = Array.from({ length: 4 }, (_, index) => {
+    const value = Math.round((max / 4) * (4 - index));
+    const y = paddingY + ((height - paddingY * 2) / 4) * index;
+    return { value, y };
+  });
+
+  container.innerHTML = `
+    <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="Procurement workflow volumes">
+      ${gridLines
+        .map(
+          (line) => `
+            <line x1="${paddingX}" y1="${line.y}" x2="${width - paddingX}" y2="${line.y}" class="graph-grid"></line>
+            <text x="8" y="${line.y + 4}" class="graph-axis">${line.value}</text>
+          `
+        )
+        .join("")}
+      <path d="${areaPath}" class="graph-area"></path>
+      <path d="${linePath}" class="graph-line"></path>
+      ${points
+        .map(
+          (point) => `
+            <circle cx="${point.x}" cy="${point.y}" r="6" class="graph-point"></circle>
+            <text x="${point.x}" y="${height - 6}" text-anchor="middle" class="graph-label">${point.label}</text>
+            <text x="${point.x}" y="${point.y - 14}" text-anchor="middle" class="graph-value">${point.value}</text>
+          `
+        )
+        .join("")}
+    </svg>
+  `;
+}
+
 function renderSelectOptions() {
   const supplierOptions = state.suppliers
     .map((supplier) => `<option value="${supplier.ID}">${supplier.name}</option>`)
@@ -285,6 +341,7 @@ async function loadData() {
   renderMetrics();
   renderSpendChart();
   renderTimeline();
+  renderWorkflowGraph();
   renderSelectOptions();
   renderTables();
 }

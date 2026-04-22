@@ -188,6 +188,66 @@ button[type="submit"] {
   margin-top: 18px;
 }
 
+.graph-panel {
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.graph-heading p {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.workflow-graph {
+  margin-top: 18px;
+}
+
+.workflow-graph svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.graph-grid {
+  stroke: rgba(23, 33, 33, 0.12);
+  stroke-width: 1;
+}
+
+.graph-axis,
+.graph-label,
+.graph-value {
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.graph-axis,
+.graph-label {
+  fill: var(--muted);
+  font-size: 11px;
+}
+
+.graph-value {
+  fill: var(--accent-deep);
+  font-size: 12px;
+}
+
+.graph-area {
+  fill: rgba(31, 111, 120, 0.14);
+}
+
+.graph-line {
+  fill: none;
+  stroke: var(--teal);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.graph-point {
+  fill: white;
+  stroke: var(--accent);
+  stroke-width: 3;
+}
+
 .bar-row {
   display: grid;
   gap: 6px;
@@ -299,6 +359,10 @@ td {
 
   .form-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .graph-label {
+    font-size: 10px;
   }
 }
 
